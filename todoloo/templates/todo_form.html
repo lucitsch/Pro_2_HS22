@@ -1,0 +1,13 @@
+{% include "header.jinja" %}
+<form method="POST">
+  <div class="mb-3">
+    <label for="aufgabe" class="form-label">Aufgabe</label>
+    <input type="text" class="form-control" id="aufgabe" name="aufgabe">
+  </div>
+  <div class="mb-3">
+    <label for="deadlline" class="form-label">Deadline</label>
+    <input type="date" class="form-control" id="deadlline" name="deadline">
+  </div>
+  <button type="submit" class="btn btn-primary">Abschicken</button>
+</form>
+{% include "footer.jinja" %}
