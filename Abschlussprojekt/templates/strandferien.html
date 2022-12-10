@@ -1,9 +1,14 @@
+<!-- header übernommen von jinja Datei -->
 {% include "header.jinja" %}
 <body>
-<form method="POST" action="{{ url_for('list') }}">
 
-  <h3>Strandbekleidung</h3>
+<!-- Was ist das? -->
+<form method="POST" action="{{ url_for('start') }}">
 
+<!-- Titel -->
+<h3>Strandbekleidung</h3>
+
+<!-- Start Checkboxen -->
 <div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
   <label class="form-check-label" for="flexCheckDefault">
@@ -15,7 +20,7 @@
   <label class="form-check-label" for="flexCheckChecked">
     Taucherbrille
   </label>
-        <div class="form-check">
+<div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
   <label class="form-check-label" for="flexCheckDefault">
     Flossen
@@ -78,8 +83,10 @@
 </div>
 
 
-  <h3>Reisedokumente</h3>
+<!-- Titel -->
+<h3>Reisedokumente</h3>
 
+<!-- Start Checkboxen -->
 <div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
   <label class="form-check-label" for="flexCheckChecked">
@@ -115,8 +122,10 @@
   </label>
 </div>
 
-  <h3>Hygiene</h3>
+<!-- Titel -->
+<h3>Hygiene</h3>
 
+<!-- Start Checkboxen -->
 <div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
   <label class="form-check-label" for="flexCheckChecked">
@@ -203,8 +212,11 @@
     Schmuck
   </label>
 </div>
-    <h3>Finanzen</h3>
 
+<!-- Titel -->
+<h3>Finanzen</h3>
+
+<!-- Start Checkboxen -->
 <div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
   <label class="form-check-label" for="flexCheckDefault">
@@ -229,8 +241,10 @@
   </label>
 </div>
 
-  <h3>Handy</h3>
+<!-- Titel -->
+<h3>Handy</h3>
 
+<!-- Start Checkboxen -->
 <div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
   <label class="form-check-label" for="flexCheckDefault">
@@ -284,8 +298,11 @@
     Schutzhülle
   </label>
 </div>
-  <h3>Unterhaltung</h3>
 
+  <!-- Titel -->
+<h3>Unterhaltung</h3>
+
+<!-- Start Checkboxen -->
 <div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
   <label class="form-check-label" for="flexCheckDefault">
@@ -340,7 +357,7 @@
   </label>
 </div>
 
-    <input type="submit">
-</form>
+<!-- Button um die Packliste zu speichern -->
+  <button type="submit" class="btn btn-success">Speichern</button></form>
 </body>
 </html>

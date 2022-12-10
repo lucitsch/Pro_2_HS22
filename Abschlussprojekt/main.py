@@ -11,21 +11,38 @@ app = Flask(__name__)
 def start():
     return render_template('index.html')
 
-
-@app.route("/sommerferien", methods=['GET', 'POST'])
+#Sommerpackliste
+@app.route("/sommerkleider", methods=['GET', 'POST'])
 def sommer():
     if request.method == 'POST':
         print(request.form.getlist('mycheckbox'))
         return 'Ihre Auswahl wurde gespeicher. Klicken Sie weiter um Ihre Packliste einzusehen'
     return render_template('sommerkleider.html')
 
-@app.route("/winterferien", methods=['GET', 'POST'])
-def index():
+#Winterpackliste
+@app.route("/winterkleider", methods=['GET', 'POST'])
+def winter():
     if request.method == 'POST':
         print(request.form.getlist('mycheckbox'))
         return 'Ihre Auswahl wurde gespeicher. Klicken Sie weiter um Ihre Packliste einzusehen'
     return render_template('winterkleider.html')
 
+#Skipackliste
+@app.route("/skikleider", methods=['GET', 'POST'])
+def ski():
+    if request.method == 'POST':
+        print(request.form.getlist('mycheckbox'))
+        return 'Ihre Auswahl wurde gespeicher. Klicken Sie weiter um Ihre Packliste einzusehen'
+    return render_template('skiferien.html')
 
+#Strandkleider
+@app.route("/strandkleider", methods=['GET', 'POST'])
+def strand():
+    if request.method == 'POST':
+        print(request.form.getlist('mycheckbox'))
+        return 'Ihre Auswahl wurde gespeicher. Klicken Sie weiter um Ihre Packliste einzusehen'
+    return render_template('strandferien.html')
+
+#Ruft Internetseite auf
 if __name__ == "__main__":
     app.run(debug=True, port=5007)

@@ -54,8 +54,7 @@ von Ferien, am meisten eine Packliste zusammengestellt wird.
 ### FAQ's
 
 - ReadMe? macht so sinn? was gibt es noch für weitere Optionen?
-- header bei allem gleich machen mit jinja?
 - checkboxen schön anordnen
 - Kommentare müssen wie gestalten sein
-- Wie pushe ich auf git
+- wie kann ich bei der tageauswahl eine Zahl eingeben
 - 
