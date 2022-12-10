@@ -30,16 +30,20 @@ def add_new_todo():
 
 @app.route("/viz")
 def grafik():
-    todos = auslesen()
-    x = []
-    y = []
+    todos = todos_laden()
+    deadlines = {}
     for eintrag in todos:
-        x.append(todo[1])
-        y.append(todo[1])
+        if eintrag[1] not in deadlines:
+            deadlines[eintrag[1]] = 1
+        else:
+            deadlines[eintrag[1]] += 1
+
+    x = deadlines.keys()
+    y = deadlines.values()
     fig = px.bar(x=x, y=y)
     div = plot(fig, output_type="div")
     return render_template("viz.html", barchart=div, seitentitel="Piechart")
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5001)
+    app.run(debug=True, port=5005)

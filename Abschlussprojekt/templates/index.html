@@ -1,15 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{% block titel %} Blogpost {% endblock %} </title>
-</head>
-<body>
+{% include 'header.jinja' %}
 
-<h1> Blogpost </h1>
-{% block authForm %}
+{% block content %}
+
+# block content ist ein Block, der durch Inhalte ersetzt wird, je nach de untergeordneten Vorlage, die ihn überschreiben wird.
+
+
+<div class="text-center">
+    <h1>{% block title %} Erstellen sie ihre personalisierte Packliste{% endblock %}</h1>
+</div>
+<div class="dropdown">
+    <label for="quality">Was ist die Art Ferien die sie machen möchten?</label>
+    <select id="quality" name="quality">
+      <option value="Sommerferien">sommerferien</option>
+      <option value="Winterferien">winterferien</option>
+      <option value="Skiferien">skiferien</option>
+      <option value="Strandferien">strandferien</option>
+
+
+    </select>
+</div>
+<div class="dropdown">
+    <label for="quality">Wie viele Tage gehst du in den Urlaub?</label>
+    <select id="quality" name="quality">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+</div>
+
+<input type="submit">
+
+# endblock ist ein Block, der durch Inhalte ersetzt wird, je nach de untergeordneten Vorlage, die ihn überschreiben wird.
 
 {% endblock %}
-
-</body>
-</html>
