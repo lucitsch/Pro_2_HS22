@@ -53,8 +53,11 @@ von Ferien, am meisten eine Packliste zusammengestellt wird.
 
 ### FAQ's
 
-- ReadMe? macht so sinn? was gibt es noch für weitere Optionen?
+- Anzahl Tage kein dropdown sondern normal
 - checkboxen schön anordnen
 - Kommentare müssen wie gestalten sein
 - wie kann ich bei der tageauswahl eine Zahl eingeben
+- Datenbank und Karten erstellen, dass man Packlisten einsehen kann
+- bootstrap unterschiedliche herunterladen?
+- für was ist das venv in der todoloo app
 - 

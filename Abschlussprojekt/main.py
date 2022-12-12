@@ -4,12 +4,30 @@ from flask import render_template
 #um die html Datein zu verwenden
 from flask import request
 
+from Abschlussprojekt.datenbank import abspeichern, auslesen, packliste_laden
+
 app = Flask(__name__)
 
 #Starseite
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
+def ad_new_packliste():
+    if request.method == "GET":
+        return render_template("index.html", seitentitel="eingabe")
+
+    if request.method == "POST":
+        art = request.form['art']
+        anzahl = request.form['anzahl']
+        deadline = request.form['deadline']
+        print(f"Request Form Art: {art}")
+        print(f"Request Form Anzahl: {anzahl}")
+        print(f"Request Form Deadline: {deadline}")
+        abspeichern(art, anzahl, deadline)
+        return "hat funktioniert"
+
+@app.route("/packlisten")
 def start():
-    return render_template('index.html')
+    packliste = packliste_laden()
+    return render_template("packliste.html", liste=packliste, seitentitel="start")
 
 #Sommerpackliste
 @app.route("/sommerkleider", methods=['GET', 'POST'])
@@ -42,6 +60,7 @@ def strand():
         print(request.form.getlist('mycheckbox'))
         return 'Ihre Auswahl wurde gespeicher. Klicken Sie weiter um Ihre Packliste einzusehen'
     return render_template('strandferien.html')
+
 
 #Ruft Internetseite auf
 if __name__ == "__main__":

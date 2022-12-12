@@ -9,8 +9,8 @@
 
 <!-- erstes Dropdownmenü -->
 <div class="dropdown">
-    <label for="quality">Was ist die Art Ferien die sie machen möchten?</label>
-    <select id="quality" name="quality">
+    <label for="art">Was ist die Art Ferien die sie machen möchten?</label>
+    <select id="art" name="art">
       <option value="Sommerferien">Sommerferien</option>
       <option value="Winterferien">Winterferien</option>
       <option value="Skiferien">Skiferien</option>
@@ -20,8 +20,8 @@
 <!-- zweites Dropdownmenü -->
 </div>
 <div class="dropdown">
-    <label for="quality">Wie viele Tage gehst du in den Urlaub?</label>
-    <select id="quality" name="quality">
+    <label for="anzahl">Wie viele Tage gehst du in den Urlaub?</label>
+    <select id="anzahl" name="anzahl">
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -49,6 +49,7 @@
 <!-- Button um die Einstellungen zu speichern -->
   <button type="submit" class="btn btn-primary">Speichern</button>
 </form>
+{% include "footer.jinja" %}
 
 
 
