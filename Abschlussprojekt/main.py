@@ -3,14 +3,16 @@ from flask import Flask
 from flask import render_template
 #um die html Datein zu verwenden
 from flask import request
-
+from flask import Flask, render_template
 from Abschlussprojekt.datenbank import abspeichern, auslesen, packliste_laden
+from Abschlussprojekt.sachen_liste import sachen
 
 app = Flask(__name__)
 
+
 #Starseite
 @app.route("/", methods=["GET", "POST"])
-def ad_new_packliste():
+def add_new_packliste():
     if request.method == "GET":
         return render_template("index.html", seitentitel="eingabe")
 
@@ -35,7 +37,9 @@ def sommer():
     if request.method == 'POST':
         print(request.form.getlist('mycheckbox'))
         return 'Ihre Auswahl wurde gespeicher. Klicken Sie weiter um Ihre Packliste einzusehen'
-    return render_template('sommerkleider.html')
+
+    kategorien = ["Sommerbekleidung", "Reisedokumente", "Hygiene", "Finanzen", "Handy", "Unterhaltung"]
+    return render_template('pack_auswahl.html', sachen=sachen, kategorien=kategorien)
 
 #Winterpackliste
 @app.route("/winterkleider", methods=['GET', 'POST'])
@@ -43,7 +47,9 @@ def winter():
     if request.method == 'POST':
         print(request.form.getlist('mycheckbox'))
         return 'Ihre Auswahl wurde gespeicher. Klicken Sie weiter um Ihre Packliste einzusehen'
-    return render_template('winterkleider.html')
+
+    kategorien = ["Winterkleider", "Reisedokumente", "Hygiene", "Finanzen", "Handy", "Unterhaltung"]
+    return render_template('pack_auswahl.html', sachen=sachen, kategorien=kategorien)
 
 #Skipackliste
 @app.route("/skikleider", methods=['GET', 'POST'])
@@ -51,7 +57,9 @@ def ski():
     if request.method == 'POST':
         print(request.form.getlist('mycheckbox'))
         return 'Ihre Auswahl wurde gespeicher. Klicken Sie weiter um Ihre Packliste einzusehen'
-    return render_template('skiferien.html')
+
+    kategorien = ["Skibekleidung", "Reisedokumente", "Hygiene", "Finanzen", "Handy", "Unterhaltung"]
+    return render_template('pack_auswahl.html', sachen=sachen, kategorien=kategorien)
 
 #Strandkleider
 @app.route("/strandkleider", methods=['GET', 'POST'])
@@ -59,7 +67,9 @@ def strand():
     if request.method == 'POST':
         print(request.form.getlist('mycheckbox'))
         return 'Ihre Auswahl wurde gespeicher. Klicken Sie weiter um Ihre Packliste einzusehen'
-    return render_template('strandferien.html')
+
+    kategorien = ["Strandbekleidung", "Reisedokumente", "Hygiene", "Finanzen", "Handy", "Unterhaltung"]
+    return render_template('pack_auswahl.html', sachen=sachen, kategorien=kategorien)
 
 
 #Ruft Internetseite auf

@@ -12,7 +12,6 @@ def abspeichern(aufgabe, deadline):
 
 def todos_laden():
     todos = auslesen()
-    todos_html = todos.replace("\n", "<br>")
     todo_liste = todos.split("\n")
     neue_liste = []
     for eintrag in todo_liste:

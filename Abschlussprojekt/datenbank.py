@@ -12,7 +12,6 @@ def abspeichern(art, anzahl, deadline):
 
 def packliste_laden():
     packliste = auslesen()
-    packliste_html = packliste.replace("\n", "<br>")
     packliste_liste = packliste.split("\n")
     neue_liste = []
     for eintrag in packliste_liste:

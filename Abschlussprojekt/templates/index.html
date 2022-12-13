@@ -2,11 +2,11 @@
 {% include 'header.jinja' %}
 
 <!-- Bootstrap von stylesheet übernommen -->
-<div class="text-center">
+<div class="text-center" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'bootstrap/style/stylesheet.css') }}">
     <h1>{% block title %} Erstellen sie ihre personalisierte Packliste{% endblock %}</h1>
 </div>
-
+<form method="POST">
 <!-- erstes Dropdownmenü -->
 <div class="dropdown">
     <label for="art">Was ist die Art Ferien die sie machen möchten?</label>
@@ -16,31 +16,15 @@
       <option value="Skiferien">Skiferien</option>
       <option value="Strandferien">Strandferien</option>
     </select>
+</div>
 
 <!-- zweites Dropdownmenü -->
-</div>
 <div class="dropdown">
     <label for="anzahl">Wie viele Tage gehst du in den Urlaub?</label>
-    <select id="anzahl" name="anzahl">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="1">5</option>
-      <option value="2">6</option>
-      <option value="3">7</option>
-      <option value="4">8</option>
-      <option value="1">9</option>
-      <option value="2">10</option>
-      <option value="3">11</option>
-      <option value="4">12</option>
-      <option value="3">13</option>
-      <option value="4">14</option>
-    </select>
+    <input type="number" name="anzahl"></input>
+</div>
 
 <!-- Angabe des Erstelldatums der Packliste -->
-</div>
-<form method="POST">
   <div class="mb-3">
     <label for="deadlline" class="form-label"><h5>Erstelldatum</h5></label>
     <input type="date" class="form-control" id="deadlline" name="deadline">
