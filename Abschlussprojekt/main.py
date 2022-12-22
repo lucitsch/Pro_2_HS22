@@ -17,18 +17,33 @@ def add_new_packliste():
         return render_template("index.html", seitentitel="eingabe")
 
     if request.method == "POST":
-        art = request.form['art']
+        typ = request.form['typ']
         anzahl = request.form['anzahl']
         deadline = request.form['deadline']
-        print(f"Request Form Art: {art}")
+        print(f"Request Form Typ: {typ}")
         print(f"Request Form Anzahl: {anzahl}")
         print(f"Request Form Deadline: {deadline}")
-        abspeichern(art, anzahl, deadline)
-        return "hat funktioniert"
+        abspeichern(typ, anzahl, deadline)
+        if typ == "Sommerferien":
+            return "winter"
+        elif typ == "Winterferien":
+            return "SOMMER"
+        elif typ == "Skiferien":
+            return "Ski"
+        elif typ == "Strandferien":
+            return "Strand"
+        # return "hat funktioniert"
 
-@app.route("/packlisten")
+@app.route("/packlisten", methods=["GET", "POST"])
 def start():
+
     packliste = packliste_laden()
+    if request.method == "POST":
+        a = request.form.getlist("name")
+        print("Deine Packliste wurde gespeichert, du kannst sie in der Datenbank einsehen")
+        packliste_last = packliste[-1]
+        packliste_last.append(a)
+        packliste[-1] = packliste_last
     return render_template("packliste.html", liste=packliste, seitentitel="start")
 
 #Sommerpackliste

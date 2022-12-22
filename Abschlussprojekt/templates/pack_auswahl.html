@@ -10,13 +10,13 @@
       <!-- Start Checkboxen -->
       {% for ding in sachen[kategorie] %}
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" name="{{ ding }}" id="{{ ding }}">
+            <input class="form-check-input" type="checkbox" value="{{ ding }}" name="name" id="{{ ding }}">
             <label class="form-check-label" for="{{ ding }}">
                 {{ ding }}
             </label>
         </div>
       {% endfor %} <!-- Ende der Sachen Schleife -->
-    </br>
+    <br>
     {% endfor %} <!-- Ende der Kategorien Schleife -->
     <!-- Button um die Packliste zu speichern -->
     <button type="submit" class="btn btn-success">Speichern</button>

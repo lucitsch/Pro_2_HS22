@@ -6,27 +6,30 @@
     <link rel="stylesheet" href="{{ url_for('static', filename= 'bootstrap/style/stylesheet.css') }}">
     <h1>{% block title %} Erstellen sie ihre personalisierte Packliste{% endblock %}</h1>
 </div>
-<form method="POST">
+<form action="action_to_perform_after_submission" method="POST">
+
 <!-- erstes Dropdownmenü -->
+    <br>
 <div class="dropdown">
-    <label for="art">Was ist die Art Ferien die sie machen möchten?</label>
-    <select id="art" name="art">
+    <label for="typ">Was ist die Art Ferien die sie machen möchten?</label>
+    <select id="typ" name="typ">
       <option value="Sommerferien">Sommerferien</option>
       <option value="Winterferien">Winterferien</option>
       <option value="Skiferien">Skiferien</option>
       <option value="Strandferien">Strandferien</option>
     </select>
 </div>
-
 <!-- zweites Dropdownmenü -->
+    <br>
 <div class="dropdown">
     <label for="anzahl">Wie viele Tage gehst du in den Urlaub?</label>
-    <input type="number" name="anzahl"></input>
+    <input type="number" id="anzahl" name="anzahl">
 </div>
 
 <!-- Angabe des Erstelldatums der Packliste -->
+    <br>
   <div class="mb-3">
-    <label for="deadlline" class="form-label"><h5>Erstelldatum</h5></label>
+    <label for="deadlline" class="form-label">Erstelldatum</label>
     <input type="date" class="form-control" id="deadlline" name="deadline">
   </div>
 
