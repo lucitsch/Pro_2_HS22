@@ -1,0 +1,16 @@
+<!-- header übernommen von jinja Datei -->
+{% include "header.jinja" %}
+
+@app.route("/packlisten", methods=["GET", "POST"])
+def start():
+    packliste = packliste_laden()
+    if request.method == "POST":
+        a = request.form.getlist("name")
+        print("Deine Packliste wurde gespeichert, du kannst sie in der Datenbank einsehen")
+        packliste_last = packliste[-1]
+        packliste_last.append(a)
+        packliste[-1] = packliste_last
+    return render_template("packliste.html", liste=packliste, seitentitel="start")
+
+{% include "footer.jinja" %}
+

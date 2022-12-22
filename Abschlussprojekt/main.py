@@ -1,13 +1,9 @@
-from flask import Flask
-#Flask Paket wird importieren
-from flask import render_template
-#um die html Datein zu verwenden
-from flask import request
 from flask import Flask, render_template
-from Abschlussprojekt.datenbank import abspeichern, auslesen, packliste_laden
+from flask import request
+from Abschlussprojekt.datenbank import auslesen, abspeichern, packliste_laden
 from Abschlussprojekt.sachen_liste import sachen
 
-app = Flask(__name__)
+app = Flask("Packliste")
 
 
 #Starseite
@@ -32,11 +28,10 @@ def add_new_packliste():
             return "Ski"
         elif typ == "Strandferien":
             return "Strand"
-        # return "hat funktioniert"
+    return "hat funktioniert"
 
 @app.route("/packlisten", methods=["GET", "POST"])
 def start():
-
     packliste = packliste_laden()
     if request.method == "POST":
         a = request.form.getlist("name")
