@@ -11,6 +11,13 @@ def abspeichern(ort, typ, anzahl, deadline):
         open_file.write(new_content)
 
 
+def alle_speichern(data_liste):
+
+    with open("database.csv", "w") as open_file:
+        for item in data_liste:
+            open_file.write(item + "\n")
+
+
 def packliste_laden():
     packliste = auslesen()
     packliste_liste = packliste.split("\n")

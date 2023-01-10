@@ -1,6 +1,8 @@
+import datetime
+
 from flask import Flask, render_template
 from flask import request
-from Abschlussprojekt.datenbank import auslesen, abspeichern, packliste_laden
+from Abschlussprojekt.datenbank import auslesen, abspeichern, packliste_laden, alle_speichern
 from Abschlussprojekt.sachen_liste import sachen
 from flask import redirect
 
@@ -17,7 +19,7 @@ def add_new_packliste():
         ort = request.form['ort']
         typ = request.form['typ']
         anzahl = request.form['anzahl']
-        deadline = request.form['deadline']
+        deadline = str(datetime.datetime.now())
         print(f"Request From Ort: {ort}")
         print(f"Request Form Typ: {typ}")
         print(f"Request Form Anzahl: {anzahl}")
@@ -42,15 +44,32 @@ def start():
         packliste[-1] = packliste_last
     return render_template("packliste.html", liste=packliste, seitentitel="start")
 
+@app.route("/abrufen", methods=['GET', 'POST'])
+def abrufen():
+    if request.method == 'POST':
+        eintrag = request.form['data']
+
+        return eintrag
 #Sommerpackliste
 @app.route("/sommerkleider", methods=['GET', 'POST'])
 def sommer():
     if request.method == 'POST':
-        print(request.form.getlist('mycheckbox'))
-        return 'Ihre Auswahl wurde gespeicher. Klicken Sie weiter um Ihre Packliste einzusehen'
+        letzter_eintrag = request.form['letzter_eintrag']
+        alle_eintraege = auslesen().split("\n")
+        del alle_eintraege[-1]
+        name = request.form
+        print((list(name)))
+        name = name[:-1]
+        checks = ";".join(name)
+        letzter_eintrag = letzter_eintrag.rstrip(", []")
+        letzter_eintrag = letzter_eintrag + "," + str(checks)
+        alle_eintraege.append(letzter_eintrag)
+        alle_speichern(alle_eintraege)
+        return redirect("/packlisten")
 
+    letzter_eintrag = auslesen().split("\n")[-1]
     kategorien = ["Sommerbekleidung", "Reisedokumente", "Hygiene", "Finanzen", "Handy", "Unterhaltung"]
-    return render_template('pack_auswahl.html', sachen=sachen, kategorien=kategorien)
+    return render_template('pack_auswahl.html', sachen=sachen, kategorien=kategorien, letzter_eintrag=letzter_eintrag)
 
 #Winterpackliste
 @app.route("/winterkleider", methods=['GET', 'POST'])

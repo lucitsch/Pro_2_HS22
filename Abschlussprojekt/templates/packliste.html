@@ -3,9 +3,14 @@
   <div class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">{{ eintrag[0] }}</h5>
-      <p class="card-text">Anzahl Tage: {{ eintrag[1] }}</p>
-      <p class="card-text">Datum: {{ eintrag[2] }}</p>
-      <a href="#" class="btn btn-primary">abrufen</a>
+      <p class="card-text">Ferienart: {{ eintrag[1] }}</p>
+      <p class="card-text">Anzahl Tage: {{ eintrag[2] }}</p>
+      <form method="POST" action="{{url_for('abrufen')}}">
+        <input type="hidden" name="data", value="{{eintrag}}">
+        <button type="submit" class="btn btn-success">Abrufen</button>
+
+      </form>
+
 
     </div>
   </div>
