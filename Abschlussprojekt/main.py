@@ -2,6 +2,7 @@ from flask import Flask, render_template
 from flask import request
 from Abschlussprojekt.datenbank import auslesen, abspeichern, packliste_laden
 from Abschlussprojekt.sachen_liste import sachen
+from flask import redirect
 
 app = Flask("Packliste")
 
@@ -13,23 +14,23 @@ def add_new_packliste():
         return render_template("index.html", seitentitel="eingabe")
 
     if request.method == "POST":
+        ort = request.form['ort']
         typ = request.form['typ']
         anzahl = request.form['anzahl']
         deadline = request.form['deadline']
+        print(f"Request From Ort: {ort}")
         print(f"Request Form Typ: {typ}")
         print(f"Request Form Anzahl: {anzahl}")
         print(f"Request Form Deadline: {deadline}")
-        abspeichern(typ, anzahl, deadline)
+        abspeichern(ort, typ, anzahl, deadline)
         if typ == "Sommerferien":
-            return "winter"
+            return redirect("/sommerkleider")
         elif typ == "Winterferien":
-            return "SOMMER"
+            return redirect("winterkleider")
         elif typ == "Skiferien":
-            return "Ski"
+            return redirect("skikleider")
         elif typ == "Strandferien":
-            return "Strand"
-    return "hat funktioniert"
-
+            return redirect("strandkleider")
 @app.route("/packlisten", methods=["GET", "POST"])
 def start():
     packliste = packliste_laden()
@@ -81,7 +82,10 @@ def strand():
     kategorien = ["Strandbekleidung", "Reisedokumente", "Hygiene", "Finanzen", "Handy", "Unterhaltung"]
     return render_template('pack_auswahl.html', sachen=sachen, kategorien=kategorien)
 
+@app.route("/hinzufügen", methods=['GET', 'POST'])
+def add_sachen():
+    return render_template('Sachen_Hinzufügen')
 
-#Ruft Internetseite auf
+# Ruft Internetseite auf
 if __name__ == "__main__":
     app.run(debug=True, port=5007)

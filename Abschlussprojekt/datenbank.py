@@ -4,9 +4,9 @@ def auslesen():
     return inhalt
 
 
-def abspeichern(typ, anzahl, deadline):
+def abspeichern(ort, typ, anzahl, deadline):
     current_content = auslesen()
-    new_content = current_content + f"\n{typ}, {anzahl}, {deadline}"
+    new_content = current_content + f"\n{ort}, {typ}, {anzahl}, {deadline}, []"
     with open("database.csv", "w") as open_file:
         open_file.write(new_content)
 
@@ -17,6 +17,8 @@ def packliste_laden():
     neue_liste = []
     for eintrag in packliste_liste:
         if len(eintrag) != 0:
-            typ, anzahl, deadline = eintrag.split(",")
-            neue_liste.append([typ, anzahl, deadline])
+            ort, typ, anzahl, deadline, aufzaehlung = eintrag.split(",")
+            neue_liste.append([ort, typ, anzahl, deadline])
     return neue_liste
+
+
