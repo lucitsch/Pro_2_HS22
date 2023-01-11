@@ -1,29 +1,42 @@
+# um Datum und Uhrzeit zu verwenden
 import datetime
-
+# Flas wird importiert, um eine Flask-Anwendung zu erstellen
+# render_template um HTML-Templates zu rendern (darstellen)
 from flask import Flask, render_template
+# request importiert um auf Anforderungen des Benutzers zugreifen zu können
 from flask import request
+# wird verwendet um Daten aus der Datenbank zu lesen, speichern und verwalten
 from Abschlussprojekt.datenbank import auslesen, abspeichern, packliste_laden, alle_speichern
+# die Liste Sache wird importiert
 from Abschlussprojekt.sachen_liste import sachen
+# redirect wird importiert um die Navigation innerhalb der ANwendung zu steuern (HTTP-Umleitung)
 from flask import redirect
 
+# Flask-Anwendung mit dem Namen "Packliste" wird erstellt (nicht nötig)
 app = Flask("Packliste")
 
 
-#Starseite
+# Starseite / GET - um Daten von einem Server abzurufen. POST - um Daten an einen Server zu senden
 @app.route("/", methods=["GET", "POST"])
+# define, Funktion wird definiert.
 def add_new_packliste():
     if request.method == "GET":
+        # inde.html wird geladen , seitentitel is toptional und wird verwendet um Daten im Template anzuzeigen
         return render_template("index.html", seitentitel="eingabe")
 
     if request.method == "POST":
         ort = request.form['ort']
         typ = request.form['typ']
         anzahl = request.form['anzahl']
+        # Fragt aktuellen Zeitpunkt ab und speicher sie in der Variablen deadline.
+        # .now() fibt aktuelle Uhrzeit zurück. Wird in string verwandelt da es in der datenbank gespeichert wird
         deadline = str(datetime.datetime.now())
+        # f ist ein f-string welcher ermöglicht, Variablen direkt in eine Textzeichenfolge einzubettem ohne sie mit der Funktion str() umwandeln zu müssen
         print(f"Request From Ort: {ort}")
         print(f"Request Form Typ: {typ}")
         print(f"Request Form Anzahl: {anzahl}")
         print(f"Request Form Deadline: {deadline}")
+        # abspeicher in Datenbank
         abspeichern(ort, typ, anzahl, deadline)
         if typ == "Sommerferien":
             return redirect("/sommerkleider")
@@ -35,31 +48,40 @@ def add_new_packliste():
             return redirect("strandkleider")
 @app.route("/packlisten", methods=["GET", "POST"])
 def start():
+    # lädt Daten aus der Datenbank und speichert sie in packliste_laden()
     packliste = packliste_laden()
     if request.method == "POST":
+        #getlist gibt Zugriff auf mehrere Eingaben mit dem selben Namen und speichert sie in a
         a = request.form.getlist("name")
-        print("Deine Packliste wurde gespeichert, du kannst sie in der Datenbank einsehen")
+        # verweist auf das letzte Element in der packliste
         packliste_last = packliste[-1]
+        # append fügt das Element a am Ende der Liste an
         packliste_last.append(a)
+        # aktualisiert das letzte Element deer Liste
         packliste[-1] = packliste_last
+        # lsite und seitentitel werden im Template eingebettet
     return render_template("packliste.html", liste=packliste, seitentitel="start")
 
 @app.route("/abrufen", methods=['GET', 'POST'])
 def abrufen():
     if request.method == 'POST':
+        # ruft data ab und wird in eintrag gespeichert
         eintrag = request.form['data']
-
         return eintrag
 #Sommerpackliste
 @app.route("/sommerkleider", methods=['GET', 'POST'])
 def sommer():
     if request.method == 'POST':
         letzter_eintrag = request.form['letzter_eintrag']
+        # split teilt einen String in eine Liste durch das trennzeichen \n
         alle_eintraege = auslesen().split("\n")
+        # löscht das letzte Element aus der Liste
         del alle_eintraege[-1]
         name = request.form
         print((list(name)))
-        name = name[:-1]
+        # name = name[:-1]
+        # verbindet die Elemente im name Objekt und trennt sie durch ;
+        # join konvertiert Objekte in einen String. der String wird checks zugeordnet
         checks = ";".join(name)
         letzter_eintrag = letzter_eintrag.rstrip(", []")
         letzter_eintrag = letzter_eintrag + "," + str(checks)
