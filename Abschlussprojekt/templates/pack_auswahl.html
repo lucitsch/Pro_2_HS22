@@ -1,27 +1,27 @@
 <!-- header übernommen von jinja Datei -->
 {% include "header.jinja" %}
-<!-- Was ist das? -->
-
+<!-- Formularelement um Benutzereingaben zu sammeln-->
 <form method="POST">
     {% for kategorie in kategorien %}
-      <!-- Titel -->
-
+<!-- Titel -->
       <h3>{{ kategorie }}</h3>
-      <!-- Start Checkboxen -->
-      {% for ding in sachen[kategorie] %}
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="{{ ding }}" name="{{ding}}" id="{{ ding }}">
-            <label class="form-check-label" for="{{ ding }}">
-                {{ ding }}
-            </label>
-        </div>
-      {% endfor %} <!-- Ende der Sachen Schleife -->
+<!-- Start Checkboxen. mit {} wird eine Schleife erstellt, die die Elemente der Liste durchläuft -->
+    {% for ding in sachen[kategorie] %}
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="{{ ding }}" name="{{ding}}" id="{{ ding }}">
+        <label class="form-check-label" for="{{ ding }}">
+            {{ ding }}
+        </label>
+    </div>
+<!-- Ende der Sachen Schleife -->
+    {% endfor %}
     <br>
-    {% endfor %} <!-- Ende der Kategorien Schleife -->
-    <!-- Button um die Packliste zu speichern -->
+<!-- Ende der Kategorien Schleife -->
+    {% endfor %}
+<!-- Button um die Packliste zu speichern -->
     <input type="hidden" value="{{letzter_eintrag}}" name="letzter_eintrag">
     <button type="submit" class="btn btn-success">Speichern</button>
 </form>
-
+<!-- footer von jinja Datei übernommen -->
 {% include "footer.jinja" %}
 

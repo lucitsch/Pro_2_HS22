@@ -1,16 +1,14 @@
 <!-- header übernommen von jinja Datei -->
 {% include 'header.jinja' %}
-
 <!-- Bootstrap von stylesheet übernommen -->
 <div class="text-center" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'bootstrap/style/stylesheet.css') }}">
-    <h1>{% block title %} Erstellen sie ihre personalisierte Packliste{% endblock %}</h1>
+    <h1>{% block title %} Erstellen sie ihre personalisierte Packliste {% endblock %}</h1>
 </div>
 <form method="POST">
-
 <!-- Benennung der Packliste -->
     <br>
-    <label for="ort"> Wie möchten sie Ihre Packliste bennenen?</label>
+    <label for="ort">Wie möchten sie Ihre Packliste bennenen?</label>
     <input type="text" id="ort" name="ort">
 <!-- erstes Dropdownmenü -->
     <br>
@@ -24,19 +22,16 @@
       <option value="Strandferien">Strandferien</option>
     </select>
 </div>
-<!-- zweites Dropdownmenü -->
+<!-- Angabe Urlaubstage -->
     <br>
 <div class="dropdown">
     <label for="anzahl">Wie viele Tage gehst du in den Urlaub?</label>
     <input type="number" id="anzahl" name="anzahl">
 </div>
-
-<!-- Angabe des Erstelldatums der Packliste -->
-
-
 <!-- Button um die Einstellungen zu speichern -->
   <button type="submit" class="btn btn-primary">Speichern</button>
 </form>
+<!-- footer von jinja Datei übernommen -->
 {% include "footer.jinja" %}
 
 

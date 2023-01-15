@@ -11,7 +11,7 @@ sachen = {
             "kurze Hosen",
             "kurze Socken",
             "Bikini",
-            "Badehosen"
+            "Badehosen",
             "Kleid",
             "Hemd",
             "Sweatshirtjacke",
@@ -23,7 +23,7 @@ sachen = {
         "Skibekleidung": [
             "Ski",
             "Snowboard",
-            "Skischcuhe",
+            "Skischuhe",
             "Snowboardschuhe",
             "Skijacke",
             "Skihose",
@@ -50,13 +50,12 @@ sachen = {
             "Strandtuch",
             "Wasserspielzeug",
             "Sonnencreme",
-            "Skimaske",
             "Adiletten",
             "FlipFlops",
         ],
         "Reisedokumente": [
             "ID",
-            "Gültiger Reispass",
+            "Gültiger Reisepass",
             "Visum",
             "Bus-, Bahntickets",
             "Tickets",
@@ -83,14 +82,14 @@ sachen = {
             "Kreditkarte",
             "Bankkarte",
             "Bargeld der Auslandswährung",
-            "Zugangsdaten für Onkinebanking"
+            "Zugangsdaten für Onlinebanking"
         ],
         "Handy": [
             "Notfallnummer",
             "Reise-Apps",
             "Offline Karten",
             "Ladegerät",
-            "Ladekbel",
+            "Ladekabel",
             "Adapter fürs Ausland",
             "Powerbank",
             "Kopfhörer",

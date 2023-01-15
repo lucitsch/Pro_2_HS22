@@ -1,4 +1,6 @@
+<!-- header übernommen von jinja Datei -->
 {% include 'header.jinja' %}
+<!-- Schleife-->
 {% for eintrag in liste %}
   <div class="card" style="width: 18rem;">
     <div class="card-body">
@@ -6,13 +8,14 @@
       <p class="card-text">Ferienart: {{ eintrag[1] }}</p>
       <p class="card-text">Anzahl Tage: {{ eintrag[2] }}</p>
       <form method="POST" action="{{url_for('abrufen')}}">
-        <input type="hidden" name="data", value="{{eintrag}}">
+<!-- verstecktes input Feld, sendet trotzdem die Werte wenn das Formular gesendet wird -->
+        <input type="hidden" name="data" value="{{eintrag}}">
         <button type="submit" class="btn btn-success">Abrufen</button>
       </form>
-
     </div>
   </div>
-
+<!-- Ende der Schleife -->
 {% endfor %}
+<!-- footer von jinja Datei übernommen -->
 {% include "footer.jinja" %}
 
