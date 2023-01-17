@@ -8,3 +8,16 @@ h2 {
     padding: 20px;
 
 }
+
+#new {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#button {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+

@@ -3,9 +3,17 @@
 <!-- Bootstrap von stylesheet übernommen -->
 <div class="text-center" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'bootstrap/style/stylesheet.css') }}">
-    <h1>{% block title %} Erstellen sie ihre personalisierte Packliste{% endblock %}</h1>
+    <h2>{% block title %} Geben sie den Artikel welcher zur Packlistenauswahl hinzugefügt werden möchte unten
+        in das Textfeld ein{% endblock %}</h2>
 </div>
-<form method="POST" action="{{ url_for('hinzufügen') }}">
+<form method="POST">
+<!-- Textfeld um Artikel hinzuzufügen -->
+    <br>
+    <input type="text" id="new" name="new">
+    <br>
+<!-- Button um die Eingabe zu speichern -->
+    <button type="submit" class="btn btn-primary" id="button">Hinzufügen</button>
+
 
 
 

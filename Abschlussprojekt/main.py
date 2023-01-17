@@ -136,7 +136,9 @@ def strand():
 
 @app.route("/hinzufügen", methods=['GET', 'POST'])
 def add_sachen():
-    return render_template('Sachen_Hinzufügen')
+    if request.method == 'POST':
+        sachen["Persönliche Artikel"].append(value)
+    return render_template('Sachen_Hinzufügen.html')
 
 
 # Ruft Internetseite auf
