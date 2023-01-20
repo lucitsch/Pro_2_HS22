@@ -1,4 +1,6 @@
+
 def auslesen():
+    # Liest den Inhalt der Datenbank und weist ihn der Variablen Inhalt zu
     # r ist der "read"-Modus. Inhalt der Datei wird eingelesen
     with open("database.csv", "r") as open_file:
         inhalt = open_file.read()

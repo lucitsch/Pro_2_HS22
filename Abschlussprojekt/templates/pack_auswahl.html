@@ -19,6 +19,7 @@
 <!-- Ende der Kategorien Schleife -->
     {% endfor %}
 <!-- Button um die Packliste zu speichern -->
+<!-- verstecktes input Feld, sendet trotzdem die Werte wenn das Formular gesendet wird -->
     <input type="hidden" value="{{letzter_eintrag}}" name="letzter_eintrag">
     <button type="submit" class="btn btn-success">Speichern</button>
 </form>

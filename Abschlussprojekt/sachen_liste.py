@@ -106,7 +106,5 @@ sachen = {
             "Filme",
             "Fernglas"
         ],
-        "Persönliche Artikel": [
 
-        ]
     }

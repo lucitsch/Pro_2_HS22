@@ -1,7 +1,9 @@
 <!-- header übernommen von jinja Datei -->
 {% include 'header.jinja' %}
 <!-- Schleife-->
+<div class="row">
 {% for eintrag in liste %}
+<!-- Darstellung in cardstyle -->
   <div class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">{{ eintrag[0] }}</h5>
@@ -16,6 +18,6 @@
   </div>
 <!-- Ende der Schleife -->
 {% endfor %}
+</div>
 <!-- footer von jinja Datei übernommen -->
 {% include "footer.jinja" %}
-
